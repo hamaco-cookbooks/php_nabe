@@ -8,7 +8,7 @@ Requirements
 
 ### Platforms
 
-- Debian, Ubuntu
+- Debian, Ubuntu, CentOS
 
 
 Usage
