@@ -12,7 +12,9 @@ action :install do
         $HOME/app/php-nabe/php-nabe use #{new_resource.version}
         $HOME/app/php-nabe/php-nabe ext-install #{new_resource.name}
 
-        test $current_version && $HOME/app/php-nabe/php-nabe use $current_version
+        if [ "$current_version" -ne "" ]; then
+          $HOME/app/php-nabe/php-nabe use $current_version
+        fi
       EOH
 
       not_if "#{node["php-nabe"]["user_home_root"]}/#{new_resource.user}/app/php-nabe/build/php-#{new_resource.version}/bin/php #{node["php-nabe"]["user_home_root"]}/#{new_resource.user}/app/php-nabe/lib/listext.php | grep #{new_resource.name}"
