@@ -30,7 +30,7 @@ action :install do
       environment "HOME" => "#{node["php-nabe"]["user_home_root"]}/#{new_resource.user}"
 
       code <<-EOH
-        $HOME/app/php-nabe/bin/php-nabe install --with-openssl #{new_resource.name}
+        $HOME/app/php-nabe/bin/php-nabe install --enable-fpm --with-openssl #{new_resource.name}
       EOH
 
       not_if "ls #{node["php-nabe"]["user_home_root"]}/#{new_resource.user}/app/php-nabe/build/php-#{new_resource.name}"
